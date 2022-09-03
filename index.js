@@ -10,9 +10,10 @@ console.log(__dirname)
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors');
-app.use(express.static(path.join(process.cwd(), 'public')));
+
 
 const app = express();
+app.use(express.static(path.join(process.cwd(), 'public')));
 
 app.use(bodyParser.json())
 // app.use(cors())
