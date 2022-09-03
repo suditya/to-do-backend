@@ -26,7 +26,9 @@ app.use(cors({origin: true, credentials: true}));
 
 const UserRouter = require('./api/User');
 app.use('/api/user', UserRouter)
-
+app.use(function (req, res, next) {
+    res.sendFile(path.join(process.cwd(), 'public', 'index.html'));
+})
 const PORT = process.env.PORT || 3000
 
 
