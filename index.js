@@ -26,8 +26,8 @@ app.use(cors({origin: true, credentials: true}));
 const UserRouter = require('./api/User');
 app.use('/api/user', UserRouter)
 
-// const PORT = process.env.PORT_NUMBER || 3000
-const PORT = 3000
+const PORT = process.env.PORT || 3000
+
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
