@@ -26,7 +26,6 @@ router.get('/getLeaderBoard',(req,res)=>
 
 router.get('/getPlayerDetails/:emailID',(req,res)=>
 {
-    console.log("router k call ",req.params["emailID"]);
     getPlayerDetails(req,res);
 })
 

@@ -191,6 +191,8 @@ const getLeaderBoard= async(req, res) =>
     }
 }
 
+
+
 module.exports = {
     SigninController,
     SignupController,
