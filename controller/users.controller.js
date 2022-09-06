@@ -49,6 +49,7 @@ const SignupController = async (req, res) => {
     })
 }
 
+console.log("test");
 
 
 const SigninController = async (req, res) => {
