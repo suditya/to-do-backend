@@ -135,7 +135,7 @@ const getPlayerDetails= async(req, res)=>
 }
 
 
-const getLeaderBoard= async(req, res) =>
+const getLeaderBoard= async (req, res) =>
 {
     try
     {
