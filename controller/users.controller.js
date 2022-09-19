@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
-const leaderboard = require('../models/leaderboard');
+
 
 
 const SignupController = async (req, res) => {
@@ -49,7 +49,7 @@ const SignupController = async (req, res) => {
     })
 }
 
-console.log("test");
+
 
 
 const SigninController = async (req, res) => {
@@ -99,24 +99,7 @@ const SigninController = async (req, res) => {
         }))
 }
 
-const insertLeaderBoard = async (req, res) => 
-{
-    let {email,
-        name,
-        lowScore,
-        time,
-        countryEmoji,country} = req.body;
-    
-    const newEntry = new leaderboard({
-        email,
-        name,
-        lowScore,
-        time,
-        countryEmoji
-    });
-    const a = newEntry.save();
-    res.send(a);
-}
+
 
 const getPlayerDetails= async(req, res)=>
 {
@@ -135,26 +118,10 @@ const getPlayerDetails= async(req, res)=>
 }
 
 
-const getLeaderBoard= async (req, res) =>
-{
-    try
-    {
-        const arrayOfPlayers= await leaderboard.find({}).sort({
-            lowScore:1,
-            time:1
-        });
-        res.send(arrayOfPlayers);
-    }
-    catch(err)
-    {
-        res.send(err);
-    }
-}
+
 
 module.exports = {
     SigninController,
     SignupController,
-    insertLeaderBoard,
-    getLeaderBoard,
     getPlayerDetails
 }

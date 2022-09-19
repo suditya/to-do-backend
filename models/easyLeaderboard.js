@@ -8,6 +8,6 @@ const leaderBoardSchema = new mongoose.Schema({
     countryEmoji:String,
 })
 
-const leaderboard = mongoose.model('leaderboard', leaderBoardSchema);
+const easyLeaderboard = mongoose.model('easyLeaderboard', leaderBoardSchema);
 
-module.exports = leaderboard;
+module.exports = easyLeaderboard;
