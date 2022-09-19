@@ -10,11 +10,12 @@ const getEasyLeaderBoard= async (req, res) =>
             lowScore:1,
             time:1
         });
-        res.send(arrayOfPlayers);
+        res.status(200).send(arrayOfPlayers);
     }
     catch(err)
     {
-        res.send(err);
+        res.status(404).send(err);
+        
     }
 }
 
@@ -26,11 +27,11 @@ const getMediumLeaderBoard= async (req, res) =>
             lowScore:1,
             time:1
         });
-        res.send(arrayOfPlayers);
+        res.status(200).send(arrayOfPlayers);
     }
     catch(err)
     {
-        res.send(err);
+        res.status(404).send(err);
     }
 }
 
@@ -42,11 +43,11 @@ const getHardLeaderBoard= async (req, res) =>
             lowScore:1,
             time:1
         });
-        res.send(arrayOfPlayers);
+        res.status(200).send(arrayOfPlayers);
     }
     catch(err)
     {
-        res.send(err);
+        res.status(404).send(err);
     }
 }
 

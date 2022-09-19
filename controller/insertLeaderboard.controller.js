@@ -2,14 +2,15 @@ const easyLeaderboard = require('../models/easyLeaderboard');
 const mediumLeaderboard = require('../models/mediumLeaderboard');
 const hardLeaderboard = require('../models/hardLeaderboard');
 
-const insertEasyLeaderBoard = async (req, res) => 
-{
-    let {email,
+const insertEasyLeaderBoard = async (req, res) => {
+    let {
+        email,
         name,
         lowScore,
         time,
-        countryEmoji,country} = req.body;
-    
+        countryEmoji
+    } = req.body;
+
     const newEntry = new easyLeaderboard({
         email,
         name,
@@ -17,19 +18,25 @@ const insertEasyLeaderBoard = async (req, res) =>
         time,
         countryEmoji
     });
-    const a = newEntry.save();
-    res.send(a);
+    try {
+        const a = newEntry.save();
+        res.status(200).send(a);
+    }
+    catch (err) {
+        res.status(404).send(err);
+    }
+
 }
 
-const insertMediumLeaderBoard = async (req, res) => 
-{
+const insertMediumLeaderBoard = async (req, res) => {
     console.log("insert medium level ");
-    let {email,
+    let { email,
         name,
         lowScore,
         time,
-        countryEmoji,country} = req.body;
-    
+        countryEmoji
+    } = req.body;
+
     const newEntry = new mediumLeaderboard({
         email,
         name,
@@ -37,18 +44,22 @@ const insertMediumLeaderBoard = async (req, res) =>
         time,
         countryEmoji
     });
-    
-    const a = newEntry.save();
-    res.send(a);
+
+    try {
+        const a = newEntry.save();
+        res.status(200).send(a);
+    }
+    catch (err) {
+        res.status(404).send(err);
+    }
 }
-const insertHardLeaderBoard = async (req, res) => 
-{
-    let {email,
+const insertHardLeaderBoard = async (req, res) => {
+    let { email,
         name,
         lowScore,
         time,
-        countryEmoji,country} = req.body;
-    
+        countryEmoji } = req.body;
+
     const newEntry = new hardLeaderboard({
         email,
         name,
@@ -56,8 +67,13 @@ const insertHardLeaderBoard = async (req, res) =>
         time,
         countryEmoji
     });
-    const a = newEntry.save();
-    res.send(a);
+    try {
+        const a = newEntry.save();
+        res.status(200).send(a);
+    }
+    catch (err) {
+        res.status(404).send(err);
+    }
 }
 
 module.exports = {
