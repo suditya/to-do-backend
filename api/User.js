@@ -2,58 +2,38 @@ const express = require('express');
 const router = express.Router();
 
 
-const { SigninController, SignupController, getPlayerDetails} = require('../controller/users.controller.js');
-const { insertEasyLeaderBoard, insertMediumLeaderBoard, insertHardLeaderBoard } = require('../controller/insertLeaderboard.controller.js');
-
-const { getEasyLeaderBoard, getMediumLeaderBoard, getHardLeaderBoard } = require('../controller/getLeaderboard.controller.js');
-
+const { registerController, loginController} = require('../controller/users.controller.js');
+const {  getTasksController, addTaskController, updateTaskController, deleteTaskController , editTaskController} = require('../controller/tasks.controller.js');
+console.log("request came!");
 router.post('/register', (req, res) => {
-    SignupController(req, res)  
+    registerController(req, res)
 })
 
 
 router.post('/login', (req, res) => {
-    SigninController(req, res)
+    loginController(req, res)
 })
 
-router.post('/insertEasyLeaderBoard',(req,res)=>
-{
-   
-    insertEasyLeaderBoard(req,res);
-})
+router.get('/getTasks', (req, res) => {
+    console.log("task getter");
+    getTasksController(req, res);
+});
 
-router.post('/insertMediumLeaderBoard',(req,res)=>
-{
-   
-    insertMediumLeaderBoard(req,res);
-})
+router.post('/addTask', (req, res) => {
+    addTaskController(req, res);
+});
 
-router.post('/insertHardLeaderBoard',(req,res)=>
-{
-    insertHardLeaderBoard(req,res);
-})
+router.put('/updateTask/', (req, res) => {
+    updateTaskController(req, res);
+});
 
-router.get('/getEasyLeaderBoard',(req,res)=>
-{
-    
-    getEasyLeaderBoard(req,res);
-})
+router.put('/editTask/', (req, res) => {
+    editTaskController(req, res);
+});
 
-router.get('/getMediumLeaderBoard',(req,res)=>
-{
-    getMediumLeaderBoard(req,res);
-})
-
-router.get('/getHardLeaderBoard',(req,res)=>
-{
-    getHardLeaderBoard(req,res);
-})
-
-
-router.get('/getPlayerDetails/:emailID',(req,res)=>
-{
-    getPlayerDetails(req,res);
-})
+router.delete('/deleteTask/', (req, res) => {
+    deleteTaskController(req, res);
+});
 
 
 module.exports = router;

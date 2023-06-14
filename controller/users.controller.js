@@ -3,16 +3,15 @@ const User = require('../models/User');
 
 
 
-const SignupController = async (req, res) => {
+const registerController = async (req, res) => {
     let name = req.body.name;
     let email = req.body.email;
     let password = req.body.password;
-    let countryEmoji = req.body.countryEmoji
 
+    console.log(req.body);
     name = name.trim();
     email = email.trim();
     password = password.trim();
-    countryEmoji = countryEmoji.trim();
 
 
     User.find({ email }).then(result => {
@@ -29,7 +28,6 @@ const SignupController = async (req, res) => {
                     name,
                     email,
                     password: hashedPassword,
-                    countryEmoji
                 });
                 const a = newUser.save();
                 res.status(200).send(a);
@@ -50,7 +48,7 @@ const SignupController = async (req, res) => {
 
 
 
-const SigninController = async (req, res) => {
+const loginController = async (req, res) => {
     let { email, password } = req.body;
     email = email.trim();
     password = password.trim();
@@ -95,24 +93,24 @@ const SigninController = async (req, res) => {
 
 
 
-const getPlayerDetails = async (req, res) => {
+// const getPlayerDetails = async (req, res) => {
 
-    const requestedEmail = req.params.emailID;
-    try {
-        let playerObj = await User.find({ email: requestedEmail });
-        res.status(200).send(playerObj[0]);
-    }
-    catch (err) {
-        res.status(401).send(err);
-    }
+//     const requestedEmail = req.params.emailID;
+//     try {
+//         let playerObj = await User.find({ email: requestedEmail });
+//         res.status(200).send(playerObj[0]);
+//     }
+//     catch (err) {
+//         res.status(401).send(err);
+//     }
 
-}
+// }
 
 
 
 
 module.exports = {
-    SigninController,
-    SignupController,
-    getPlayerDetails
+    loginController,
+    registerController,
+    // getPlayerDetails
 }
