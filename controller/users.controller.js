@@ -8,15 +8,16 @@ const registerController = async (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
 
-    console.log(req.body);
+    // console.log(req.body);
     name = name.trim();
     email = email.trim();
     password = password.trim();
-
+    
 
     User.find({ email }).then(result => {
 
         if (result.length) {
+            // console.log("exist already")
             res.status(401).json({
 
                 message: "User with this email id already exist"
@@ -50,6 +51,7 @@ const registerController = async (req, res) => {
 
 const loginController = async (req, res) => {
     let { email, password } = req.body;
+    console.log(req.body, " login data came")
     email = email.trim();
     password = password.trim();
     User.find({ email })

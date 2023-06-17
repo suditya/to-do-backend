@@ -4,7 +4,7 @@ const router = express.Router();
 
 const { registerController, loginController} = require('../controller/users.controller.js');
 const {  getTasksController, addTaskController, updateTaskController, deleteTaskController , editTaskController} = require('../controller/tasks.controller.js');
-console.log("request came!");
+// console.log("request came!");
 router.post('/register', (req, res) => {
     registerController(req, res)
 })
@@ -15,7 +15,7 @@ router.post('/login', (req, res) => {
 })
 
 router.get('/getTasks', (req, res) => {
-    console.log("task getter");
+    // console.log("task getter");
     getTasksController(req, res);
 });
 
