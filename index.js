@@ -14,7 +14,7 @@ const cors = require('cors');
 
 const app = express();
 
-// app.use(express.static(path.join(process.cwd(), 'public')));
+app.use(express.static(path.join(process.cwd(), 'public')));
 
 app.use(bodyParser.json())
 // app.use(cors())
@@ -28,9 +28,12 @@ app.use(cors({origin: true, credentials: true}));
 
 const UserRouter = require('./api/User');
 app.use('/api/user', UserRouter)
-// app.use(function (req, res, next) {
-//     res.sendFile(path.join(process.cwd(), 'public', 'index.html'));
-// })
+app.use(function (req, res, next) {
+    res.sendFile(path.join(process.cwd(), 'public', 'index.html'));
+})
+// // Serve static files from the "public" folder
+// app.use(express.static('public'));
+
 const PORT = process.env.PORT || 3000
 
 
